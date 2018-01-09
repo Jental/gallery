@@ -3,7 +3,7 @@
 IMAGES_DIR="../";
 PREVIEWS_DIR="../previews";
 
-for filepath in $IMAGES_DIR/*[.jpg,.png]
+for filepath in $IMAGES_DIR/*[.jpg,.png,.JPG,.PNG]
 do
     filename=$(basename $filepath)
     if [ ! -f $PREVIEWS_DIR/$filename ]

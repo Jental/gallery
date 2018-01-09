@@ -7,9 +7,11 @@ if (!isset($_GET['file'])) {
 }
 $filePath = $_GET['file'];
 
-echo '<a href="' . $REL_DIR . $filePath . '"><img src="' . $REL_DIR . $filePath . '"></img></a>';
+echo '<a href="' . $REL_DIR . $filePath . '"><img src="' . $REL_DIR . $filePath . '" style="max-width: 100%; height: 85%;"></img></a>';
 echo '<br/>';
 echo $REL_DIR . $filePath;
+echo '<br/>';
+echo 'Date: ' . shell_exec("identify -format '%[exif:DateTimeOriginal]' " . $REL_DIR . $filePath);
 echo '<br/>';
 
 $baseDir = dirname(__FILE__) . '/' . $REL_DIR;
