@@ -106,8 +106,6 @@
     }
   }
 
-  echo(json_encode($directories));
-
   // asort($files);
   rsort($files);
 
