@@ -25,6 +25,10 @@
  .buttons {
    float: left;
    margin-left: -30px;
+   display: none;
+ }
+ .preview-card:hover .buttons {
+   display: inline-flex;
  }
  .buttons > a  {
    width: 30px;
@@ -50,12 +54,12 @@
  }
  .uk-position-center-left {
    position: fixed;
-   left: 0;
+   left: 10px;
    top: 50%;
  }
  .uk-position-center-right {
    position: fixed;
-   right: 0;
+   right: 10px;
    top: 50%;
  }
 </style>
