@@ -8,6 +8,9 @@
 <script type="text/javascript" src="uikit/js/uikit-icons.min.js"></script>
 
 <style>
+ body {
+   padding: 10px 30px;
+ }
  .preview-card {
    display: inline-block;
  }
@@ -43,6 +46,16 @@
    width: 100%;
  }
  .set-category {
+ }
+ .uk-position-center-left {
+   position: fixed;
+   left: 0;
+   top: 50%;
+ }
+ .uk-position-center-right {
+   position: fixed;
+   right: 0;
+   top: 50%;
  }
 </style>
 
@@ -138,12 +151,16 @@
       </ul>
     </div>
   </div>
-<?php
-  }
 
-  $fileNum++;
+<?php
+}
+
+$fileNum++;
 }
 ?>
+<a id="prevpage" class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+<a id="nextpage" class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
 
 <script type="text/javascript">
  $(function(){
@@ -207,6 +224,14 @@
      });
      $card.toggle(false);
    });
+
+   var url = new URL(window.location.href);
+   var limit = url.searchParams.get("limit");
+   var offset = url.searchParams.get("offset");
+   url.searchParams.set('offset', Number(offset) + Number(limit));
+   $('#nextpage').prop('href', url.toString());
+   url.searchParams.set('offset', Math.max(0, Number(offset) - Number(limit)));
+   $('#prevpage').prop('href', url.toString());
 
  });
 </script>
