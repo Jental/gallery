@@ -13,6 +13,7 @@
  }
  .preview-card {
    display: inline-block;
+   margin: 2px;
  }
  .preview {
    float: left;
@@ -122,6 +123,9 @@
   // asort($files);
   rsort($files);
 
+  ?>
+  <div class="uk-flex uk-flex-wrap uk-flex-center">
+<?php
   $fileNum = 0;
   $lastNum = is_null($limit) ? NULL : ($offset + $limit);
   foreach($files as $fileName) {
@@ -151,14 +155,14 @@
       </ul>
     </div>
   </div>
-
 <?php
 }
 
 $fileNum++;
 }
 ?>
-<a id="prevpage" class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+  </div>
+  <a id="prevpage" class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
 <a id="nextpage" class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
 
