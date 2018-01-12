@@ -84,7 +84,7 @@
   $baseDir = dirname(__FILE__) . '/' . $REL_DIR;
   $dir = new DirectoryIterator($baseDir);
 
-  $limit  = isset($_GET['limit']) ? (int)$_GET['limit'] : NULL;
+  $limit  = isset($_GET['limit']) ? (int)$_GET['limit'] : 50;
   $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
   $sort   = isset($_GET['sort']) ? (int)$_GET['sort'] : NULL;
 
@@ -231,7 +231,13 @@ $fileNum++;
 
    var url = new URL(window.location.href);
    var limit = url.searchParams.get("limit");
+   if (!limit) {
+     limit = 50;
+   }
    var offset = url.searchParams.get("offset");
+   if (!offset) {
+     offset = 0;
+   }
    url.searchParams.set('offset', Number(offset) + Number(limit));
    $('#nextpage').prop('href', url.toString());
    url.searchParams.set('offset', Math.max(0, Number(offset) - Number(limit)));
