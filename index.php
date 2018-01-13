@@ -62,12 +62,18 @@
    right: 10px;
    top: 50%;
  }
+ .directories {
+   margin-top: 10px;
+ }
+ .directories a {
+   margin: 5px;
+ }
 </style>
 
 </head>
 <body>
   <?php
-  $REL_DIR = '../';
+  $REL_DIR = '../' . (isset($_GET['dir']) ? ($_GET['dir'] . '/') : '');
   $PREVIEWS_DIR = '../previews/';
 
   $EXTENSIONS=array('.jpg', '.jpeg', '.png');
@@ -167,7 +173,15 @@ $fileNum++;
 ?>
   </div>
   <a id="prevpage" class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-<a id="nextpage" class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+  <a id="nextpage" class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+  <?php if (count($directories) > 0) { ?>
+    <div class="directories uk-flex uk-flex-wrap uk-flex-center">
+      <a href="index.php" class="uk-button">general</a>
+      <?php foreach ($directories as $dir) { ?>
+        <a href="index.php?dir=<?php echo $dir; ?>" class="uk-button"><?php echo $dir; ?></a>
+      <?php } ?>
+    </div>
+  <?php } ?>
 
 
 <script type="text/javascript">
