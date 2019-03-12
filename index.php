@@ -73,7 +73,8 @@
 </head>
 <body>
   <?php
-  $REL_DIR = '../' . (isset($_GET['dir']) ? ($_GET['dir'] . '/') : '');
+  $subDir = isset($_GET['dir']) ? ($_GET['dir'] . '/') : '';
+  $REL_DIR = '../' . $subDir;
   $PREVIEWS_DIR = '../previews/';
 
   $EXTENSIONS=array('.jpg', '.jpeg', '.png');
@@ -150,7 +151,7 @@
       }
   ?>
   <div class="preview-card" data-for="<?php echo $fileName; ?>"  >
-    <a class="preview" href="view.php?file=<?php echo $fileName; ?>" data-for="<?php echo $fileName; ?>">
+    <a class="preview" href="view.php?file=<?php echo ((($subDir == '') ? '' : ($subDir . '/')) . $fileName); ?>" data-for="<?php echo $fileName; ?>">
       <img src="<?php echo $previewPath;?>" ></img>
     </a>
     <div class="uk-panel buttons uk-flex-inline uk-flex-column">
